@@ -14,14 +14,17 @@ export class AppComponent implements OnInit {
   apiValues: string[] = [];
 
   title = 'MVP Starter Kit';
+  successMessage: string;
+  alertClosed = false;
 
   ngOnInit(): void {
-   this._httpService.get('http://localhost:2386/api/home')
-    .map(response => response.json())
-    .subscribe(values => {
-      this.apiValues = values;
-    });
-  }
+    this._httpService.get('http://localhost:2386/api/home')
+      .map(response => response.json())
+      .subscribe(values => {
+        this.apiValues = values;
+      });
 
+    this.successMessage = 'Hello! Can you close me? ;)';
+  }
 
 }
